@@ -12,10 +12,12 @@ import java.util.ArrayList;
  */
 public class CommonFunctions {
 
+    
     public static ArrayList<Product> filter() {
         return Product.allProducts;
     }
 
+    
     public static ArrayList<Product> filter(String productName, String category, String price) {
         ArrayList<Product> filteredList = new ArrayList<>();
 

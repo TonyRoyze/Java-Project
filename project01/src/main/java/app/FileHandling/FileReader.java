@@ -75,7 +75,7 @@ public final class FileReader {
          */
     }
 
-    public void readCategoryDataFile() {
+    public static void readCategoryDataFile() {
         Path Categories = Paths.get("Category.txt");
         try {
             List<String> dataLines = Files.readAllLines(Categories);
