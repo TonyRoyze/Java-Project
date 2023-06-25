@@ -175,7 +175,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
-        AddProductForm addProductForm = new AddProductForm();
+        AddProductForm addProductForm = new AddProductForm(role, name);
         addProductForm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnAddProductActionPerformed
@@ -187,7 +187,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
-        AddUserForm addUserForm = new AddUserForm();
+        AddUserForm addUserForm = new AddUserForm(role, name);
         addUserForm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnAddUserActionPerformed

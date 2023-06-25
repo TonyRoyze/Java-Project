@@ -16,11 +16,16 @@ import javax.swing.JOptionPane;
  * @author Vidura
  */
 public class AddProductForm extends javax.swing.JFrame {
+    
+    private String role;
+    private String firstName;
 
     /**
      * Creates new form AddProductForm
      */
-    public AddProductForm() {
+    public AddProductForm(String role, String firstName) {
+        this.role = role;
+        this.firstName = firstName;
         initComponents();
     }
 
@@ -49,6 +54,7 @@ public class AddProductForm extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         tfProductName = new javax.swing.JTextField();
         btnAddCategory = new javax.swing.JButton();
+        labelBack = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,41 +88,55 @@ public class AddProductForm extends javax.swing.JFrame {
             }
         });
 
+        labelBack.setText("Back");
+        labelBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelBackMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAdd)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(labelProductCode, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfCategory)
-                            .addComponent(tfProcessor)
-                            .addComponent(tfPrice)
-                            .addComponent(tfReleaseYear)
-                            .addComponent(tfStock)
-                            .addComponent(tfProductName)
-                            .addComponent(tfProductCode, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAddCategory)
+                        .addGap(85, 85, 85)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAdd)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(labelProductCode, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfCategory)
+                                    .addComponent(tfProcessor)
+                                    .addComponent(tfPrice)
+                                    .addComponent(tfReleaseYear)
+                                    .addComponent(tfStock)
+                                    .addComponent(tfProductName)
+                                    .addComponent(tfProductCode, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAddCategory))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(labelBack, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(85, 85, 85))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(labelBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelProductCode)
                     .addComponent(tfProductCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -165,16 +185,16 @@ public class AddProductForm extends javax.swing.JFrame {
         int stock = 0;
         double price = 0;
         for (Category cat : Category.allCategories) {
-            if (category == cat.getCategoryName()) {
+            if (category.equals(cat.getCategoryName())) {
                 categoryExcists = true;
             }
         }
 
         if (productCode.isEmpty() || productName.isEmpty() || category.isEmpty() || processor.isEmpty() || releaseYear.isEmpty() || tfStock.getText().isEmpty() || tfPrice.getText().isEmpty()) {
-            stock = Integer.parseInt(tfStock.getText());
-            price = Double.parseDouble(tfPrice.getText());
             JOptionPane.showMessageDialog(null, Constants.FIELDEMPTY, "Add Category", JOptionPane.WARNING_MESSAGE);
         } else if (categoryExcists) {
+            stock = Integer.parseInt(tfStock.getText());
+            price = Double.parseDouble(tfPrice.getText());
             Product product = new Product();
             product.setProductCode(productCode);
             product.setProductName(productName);
@@ -198,7 +218,7 @@ public class AddProductForm extends javax.swing.JFrame {
         boolean categoryExcists = false;
         String category = tfCategory.getText().toString();
         for (Category cat : Category.allCategories) {
-            if (category == cat.getCategoryName()) {
+            if (category.equals(cat.getCategoryName())) {
                 categoryExcists = true;
             }
         }
@@ -219,6 +239,12 @@ public class AddProductForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAddCategoryActionPerformed
 
+    private void labelBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelBackMouseClicked
+        HomePage homePage = new HomePage(role, firstName);
+        homePage.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_labelBackMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -232,6 +258,7 @@ public class AddProductForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel labelBack;
     private javax.swing.JLabel labelProductCode;
     private javax.swing.JTextField tfCategory;
     private javax.swing.JTextField tfPrice;

@@ -15,11 +15,14 @@ import javax.swing.JOptionPane;
  * @author Vidura
  */
 public class AddUserForm extends javax.swing.JFrame {
-
+    private String role;
+    private String firstName;
     /**
      * Creates new form AddUserForm
      */
-    public AddUserForm() {
+    public AddUserForm(String role, String firstName) {
+        this.role = role;
+        this.firstName = firstName;
         initComponents();
     }
 
@@ -49,6 +52,7 @@ public class AddUserForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         pfPassword = new javax.swing.JPasswordField();
         pfRePassword = new javax.swing.JPasswordField();
+        labelBack = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +80,13 @@ public class AddUserForm extends javax.swing.JFrame {
         jLabel4.setText("Username");
 
         jLabel1.setText("Contact");
+
+        labelBack.setText("Back");
+        labelBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelBackMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,11 +126,17 @@ public class AddUserForm extends javax.swing.JFrame {
                             .addComponent(tfFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                             .addComponent(pfRePassword))))
                 .addGap(100, 100, 100))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(labelBack, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(labelBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelFirstName)
                     .addComponent(tfFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -196,6 +213,12 @@ public class AddUserForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAddActionPerformed
 
+    private void labelBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelBackMouseClicked
+        HomePage homePage = new HomePage(role, firstName);
+        homePage.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_labelBackMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -209,6 +232,7 @@ public class AddUserForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel labelBack;
     private javax.swing.JLabel labelFirstName;
     private javax.swing.JPasswordField pfPassword;
     private javax.swing.JPasswordField pfRePassword;
