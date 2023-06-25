@@ -1,0 +1,5 @@
+John,Dorian,Manager,0987,john1dor@istore.lk,asd,asd
+John,Dorian,Manager,0987,john1dor@istore.lk,john1dor,1234
+Elliot,Reid,Manager,6549,ellried@istore.lk,ellried,asd
+Christopher,Turk,Manager,7854,christurk@istore.lk,christurk,zxc
+Percival,Cox,Cashier,7854,percox@istore.lk,percox,tyu
